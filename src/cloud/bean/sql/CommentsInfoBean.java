@@ -7,7 +7,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import cn.nubia.bean.BaseBean;
+import cloud.bean.BaseBean;
 
 /**
  * @author zhangqi
@@ -40,3 +40,4 @@ public class CommentsInfoBean extends BaseBean{
 	private String lastCommentsInfo;
 	private String lastUpdateTime;
 	private String infoSource;
+}

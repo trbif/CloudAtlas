@@ -1,6 +1,5 @@
 package cloud.crawler;
 
-我:
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -14,22 +13,21 @@ import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONException;
 import com.alibaba.fastjson.JSONObject;
 
-import cn.nubia.bean.BaseBean;
-import cn.nubia.bean.FeedbackInfo;
-import cn.nubia.bean.sql.FeedbackBean;
-import cn.nubia.crawler.parser.XMFeedbackParser;
-import cn.nubia.service.FeedbackService;
-import cn.nubia.utils.HttpConnector;
-import cn.nubia.utils.MD5Util;
-import cn.nubia.utils.NubiaConfigInfo;
+import cloud.bean.BaseBean;
+import cloud.bean.FeedbackInfo;
+import cloud.bean.sql.FeedbackBean;
+import cloud.crawler.parser.XMFeedbackParser;
+import cloud.service.FeedbackService;
+import cloud.utils.HttpConnector;
+import cloud.utils.MD5Util;
+import cloud.utils.NubiaConfigInfo;
 
 /**
  * @author zhangqi
  * @date 2017年11月29日
  * @说明:
  */
-我:
-public class XMFeedbackCrawler implements FeedBackCrawler,InitializingBean{
+public class XMFeedbackCrawler implements InitializingBean{
 	
     private final static Logger LOGGER = LoggerFactory.getLogger(XMFeedbackCrawler.class);
 
@@ -64,7 +62,6 @@ public class XMFeedbackCrawler implements FeedBackCrawler,InitializingBean{
 			"系统应用 > 传送门:722",
 			"系统应用 > 应用商店:103",
 			"系统应用 > 小米生活:419",
-我:
 			"系统应用 > 小米快传:562",
 			"系统应用 > 游戏中心:205",
 			"系统应用 > 下载管理:405",
@@ -135,7 +132,6 @@ public class XMFeedbackCrawler implements FeedBackCrawler,InitializingBean{
 			"网络与升级 > 桌面图标云备份:383",
 			"第三方应用 > 第三方应用:107",
 			"其它 > 其它:111"};
-我:
     private static Map<String,Integer> proxyMap = new HashMap<>();
     
     private final static String UNICODE = "utf-8";
@@ -159,7 +155,6 @@ public class XMFeedbackCrawler implements FeedBackCrawler,InitializingBean{
 		this.feedbackService = feedbackService;
 		return this;
 	}
-我:
     
 	/* (non-Javadoc)
 	 * @see org.springframework.beans.factory.InitializingBean#afterPropertiesSet()
@@ -182,15 +177,10 @@ public class XMFeedbackCrawler implements FeedBackCrawler,InitializingBean{
 			proxyMap.put(membersArr[0], Integer.valueOf(membersArr[1]));
 		}
 	}
-我:
 	private String replace(String str){
 		return str.replaceAll("<title>.*</title>", "").replaceAll("page=\\d{1,}", "").replaceAll("STYLEID.*static/js/mobile/common.js", "");
 	}
     
-	/* (non-Javadoc)
-	 * @see cn.nubia.crawler.CrawlerBase#getComments()
-	 */
-	@Override
 	public String seizeComments(String type) {
 		// TODO Auto-generated method stub
 		String[] typeInfo = type.split(":");
@@ -209,7 +199,6 @@ public class XMFeedbackCrawler implements FeedBackCrawler,InitializingBean{
 	        if(verifyMD5.equals(currentMD5)){
 	        	break;
 	        }
-我:
 	        verifyMD5 = currentMD5;
 	        XMFeedbackParser parser = new XMFeedbackParser();
 	        List<FeedbackInfo> fbList = parser.getUrlList(result);
@@ -226,7 +215,6 @@ public class XMFeedbackCrawler implements FeedBackCrawler,InitializingBean{
 		}
 		return result;
 	}
-我:
 	public String toJson(List<FeedbackBean> listAll) {
 		// TODO Auto-generated method stub
     	JSONArray arr = new JSONArray();
@@ -242,16 +230,11 @@ public class XMFeedbackCrawler implements FeedBackCrawler,InitializingBean{
     	}
     	return arr.toString();
 	}
-我:
 	public String addToSql(List<FeedbackBean> listAll) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	/* (non-Javadoc)
-	 * @see cn.nubia.crawler.CrawlerBase#analyzeComments(java.lang.Object)
-	 */
-	@Override
 	public String analyzeComments(String type) {
 		// TODO Auto-generated method stub
 		return null;

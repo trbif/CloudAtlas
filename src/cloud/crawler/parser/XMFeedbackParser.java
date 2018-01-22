@@ -1,6 +1,5 @@
 package cloud.crawler.parser;
 
-我:
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -14,26 +13,20 @@ import org.jsoup.select.Elements;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import cn.nubia.bean.FeedbackInfo;
-import cn.nubia.bean.sql.FeedbackBean;
-import cn.nubia.crawler.FeedbackParser;
-import cn.nubia.utils.MD5Util;
+import cloud.bean.FeedbackInfo;
+import cloud.bean.sql.FeedbackBean;
+import cloud.utils.MD5Util;
 
 /**
  * @author zhangqi
  * @date 2017年11月29日
  * @说明:
  */
-我:
-public class XMFeedbackParser implements FeedbackParser{
+public class XMFeedbackParser{
 	
     private static final Logger LOGGER = LoggerFactory.getLogger(XMFeedbackParser.class);
     private final static String RESOURCE = "小米";
 
-	/* (non-Javadoc)
-	 * @see cn.nubia.crawler.CrawlerParserBase#getUrlList(java.lang.String)
-	 */
-	@Override
 	public List<FeedbackInfo> getUrlList(String html) {
 		// TODO Auto-generated method stub
     	List<FeedbackInfo> list = new ArrayList<>();
@@ -47,7 +40,6 @@ public class XMFeedbackParser implements FeedbackParser{
     		//thread-10987617-1-1.html
     	    if (m.find( ))
     	    	href = "http://www.miui.com/"+"thread-"+m.group(2)+"-1-1.html";
-我:
 //    		String nickname = ele.getElementsByClass("col_name").text();
     	    String publishDate = "";
     	    if(ele.getElementsByClass("num").text().split("\\/").length==3)
@@ -66,11 +58,6 @@ public class XMFeedbackParser implements FeedbackParser{
     	}
 		return list;
 	}
-我:
-	/* (non-Javadoc)
-	 * @see cn.nubia.crawler.ParserBase#parse(java.lang.String, java.lang.Object)
-	 */
-	@Override
 	public List<FeedbackBean> parse(String html, FeedbackInfo entity) {
 		// TODO Auto-generated method stub
 		List<FeedbackBean> list = new ArrayList<>();
@@ -88,7 +75,6 @@ public class XMFeedbackParser implements FeedbackParser{
 		String uIversion = divs.get(3).text();
 		String demandDescription = divs.get(4).text();
 		String demandScene = divs.get(5).text();
-我:
 	    
 	    FeedbackBean bean = new FeedbackBean();
 	    bean.setDemandDescription(demandDescription);

@@ -8,7 +8,6 @@ import java.io.InputStreamReader;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.http.HttpHost;
-import org.apache.commons.lang.StringUtils;
 import org.apache.http.HttpEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpDelete;
@@ -46,7 +45,6 @@ public class HttpConnector {
 
         LOGGER.info("http client pool init : {}", conmgr.toString());
     }
-我:
    
     public HttpConnector(String url) {
         this.url = url;
@@ -74,7 +72,6 @@ public class HttpConnector {
         this.proxyPort = proxyPort;
     }
     
-我:
     public String request() {
         String result = "";
         
@@ -105,7 +102,6 @@ public class HttpConnector {
             } else if("HEAD".equals(method)){
                 http = new HttpHead(url);
             }
-我:
             
             StringBuffer sb = new StringBuffer();
             response = client.execute(http);
@@ -166,25 +162,24 @@ public class HttpConnector {
      * @param request
      * @return
      */
-我:
-public static String getIpAddr(HttpServletRequest request) throws Exception {
-        String ip = request.getHeader("X-Real-IP");
-        if (!StringUtils.isBlank(ip) && !"unknown".equalsIgnoreCase(ip)) {
-            return ip;
-        }
-        ip = request.getHeader("X-Forwarded-For");
-        if (!StringUtils.isBlank(ip) && !"unknown".equalsIgnoreCase(ip)) {
-            // 多次反向代理后会有多个IP值，第一个为真实IP。
-            int index = ip.indexOf(',');
-            if (index != -1) {
-                return ip.substring(0, index);
-            } else {
-                return ip;
-            }
-        } else {
-            return request.getRemoteAddr();
-        }
-    }
+//public static String getIpAddr(HttpServletRequest request) throws Exception {
+//        String ip = request.getHeader("X-Real-IP");
+//        if (!StringUtils.isBlank(ip) && !"unknown".equalsIgnoreCase(ip)) {
+//            return ip;
+//        }
+//        ip = request.getHeader("X-Forwarded-For");
+//        if (!StringUtils.isBlank(ip) && !"unknown".equalsIgnoreCase(ip)) {
+//            // 多次反向代理后会有多个IP值，第一个为真实IP。
+//            int index = ip.indexOf(',');
+//            if (index != -1) {
+//                return ip.substring(0, index);
+//            } else {
+//                return ip;
+//            }
+//        } else {
+//            return request.getRemoteAddr();
+//        }
+//    }
     
     
     public static String getUa(HttpServletRequest request){

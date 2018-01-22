@@ -1,6 +1,5 @@
 package cloud.bean.sql;
 
-我:
 import java.util.List;
 
 import javax.persistence.Column;
@@ -12,7 +11,7 @@ import javax.persistence.Table;
 
 import com.alibaba.fastjson.JSONObject;
 
-import cn.nubia.bean.BaseBean;
+import cloud.bean.BaseBean;
 
 
 /**
@@ -23,7 +22,6 @@ import cn.nubia.bean.BaseBean;
  */
 @Entity
 @Table(name = "comments")
-我:
 public class CommentsBean extends BaseBean{
 	/**
 	 * 
@@ -58,7 +56,6 @@ public class CommentsBean extends BaseBean{
 		public String created;
 		public String modified;
 	}
-我:
 	private static ProductCommentSummary productCommentSummary;
 	private static List<HotCommentTagStatistics> hotCommentTagStatisticsList;
 
@@ -114,7 +111,6 @@ public class CommentsBean extends BaseBean{
 	private int days;
 	private int afterDays;
 	
-我:
 	private Boolean isBad;
 	private String dataBaseID;
 	
@@ -123,3 +119,5 @@ public class CommentsBean extends BaseBean{
 	private String source;
 	private String imgUrl;
 	private String productID;
+	
+}
