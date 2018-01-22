@@ -1,0 +1,33 @@
+Œ“:
+#OFF, FATAL, ERROR, WARN, INFO, DEBUG, ALL
+log4j.rootLogger=DEBUG,stdout,R
+
+log4j.appender.stdout=org.apache.log4j.ConsoleAppender
+log4j.appender.stdout.layout=org.apache.log4j.PatternLayout
+log4j.appender.stdout.layout.ConversionPattern=[%p]-%d{yyyy-MMdd HH:mm:ss,SSS} [%c]- %m%n
+
+log4j.appender.R=org.apache.log4j.RollingFileAppender
+log4j.appender.R.layout=org.apache.log4j.PatternLayout
+log4j.appender.R.layout.ConversionPattern=[%p]-%d{yyyy-MMdd HH:mm:ss,SSS} [%c]- %m%n
+log4j.appender.R.MaxFileSize=100MB
+log4j.appender.R.MaxBackupIndex=10
+#log4j.appender.R.file=D:/FileTransfer/nubia_sync.log
+log4j.appender.R.file=F:/CloudAtlas/cloudatlas.log
+log4j.appender.R.Encoding=UTF-8
+Œ“:
+elastic_jdbc_shell_path = /data/dev/program/elasticsearch-jdbc-2.3.4.0-nubia/bin/
+elastic_jdbc_shell_file_pre = mysql-
+jdbc.driverClassName=com.mysql.jdbc.Driver
+jdbc.url=jdbc:mysql://10.206.32.74:3306/cloudatlas20171201?useUnicode=true&characterEncoding=utf-8&autoReconnect=true&failOverReadOnly=false
+jdbc.user=root
+jdbc.pass=mhbay
+es_host=http://10.206.33.33:9200
+jdbc_execute_cron=0 */2 * * * ?
+#proxy_ip_host_list ip:port,ip:port,...,ip:port
+#proxy_ip_host_list=10.206.32.180:808,10.206.33.87:808,10.206.33.3:808,10.206.32.111:808,10.206.32.172:808,10.206.33.13:808,10.206.32.74:808
+proxy_ip_host_list=10.206.33.40:808,10.206.33.12:808
+#124.47.7.38:80,121.232.147.119:9000,182.92.156.85:8118,121.232.144.53:9000,119.167.153.50:8118
+#share_memory_path = D:/DevelopWorkspace/J2EEWorkspace/NubiaReviewService/
+share_memory_path = /data/dev/workspace/NubiaReviewService/share-memory/
+after_how_long=100
+crawl_how_many=5000
